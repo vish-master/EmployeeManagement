@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "70ee329b-0372-45f6-bef3-e6482cb42f32",
+		"name": "EmployeeManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/employees/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"generalDetails\": {\r\n        \"age\": 1,\r\n        \"firstName\": \"FirstNameTest\",\r\n        \"lastName\": \"LastNameTest\"\r\n    },\r\n    \"spouse\": {\r\n        \"name\": \"SpouseTest\",\r\n        \"age\": 2\r\n    },\r\n    \"addresses\": [\r\n        {\r\n            \r\n            \"city\": \"TestCity \",\r\n            \"street\": \"TestStreet \",\r\n            \"number\": 115\r\n        }\r\n    ],\r\n    \"children\": [\r\n        {\r\n            \r\n            \"name\": \"ChildTest\",\r\n            \"age\": 2\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/employees/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "CreateEmployeeRequest"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/employees/1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"generalDetails\": {\r\n \r\n        \"firstName\": \"UpdatedFirstName\",\r\n        \"lastName\": \"UpdatedLastName\"\r\n    },\r\n    \"spouse\": {\r\n        \"name\": \"UpdatedSpouseName\",\r\n        \"age\": 22\r\n    },\r\n    \"addresses\": [\r\n        {\r\n            \r\n            \"city\": \"UpdatedTestCity \",\r\n            \"street\": \"UpdatedTestStreet \",\r\n            \"number\": 117\r\n        }\r\n    ],\r\n    \"children\": [\r\n        {\r\n            \r\n            \"name\": \"UpdatedChildTest\",\r\n            \"age\": 2\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/employees/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"1"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Update Employee By ID"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/employees/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \n}"
+				},
+				"url": {
+					"raw": "localhost:8080/employees/getEmployeeById/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"getEmployeeById",
+						"1"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "GetAllEmployeesRequest"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/employees/getEmployeeById/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/employees/getEmployeeById/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"getEmployeeById",
+						"1"
+					]
+				},
+				"description": "Fetch Employee By Id"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/employees/getEmployeeGeneralDetails/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/employees/getEmployeeGeneralDetails/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"getEmployeeGeneralDetails",
+						"1"
+					]
+				},
+				"description": "Get General Details of particular employee"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/employees/getEmployeeSpouse/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/employees/getEmployeeSpouse/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"getEmployeeSpouse",
+						"1"
+					]
+				},
+				"description": "getEmployeeSpouse"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/employees/getEmployeeChildren/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/employees/getEmployeeChildren/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"getEmployeeChildren",
+						"1"
+					]
+				},
+				"description": "GetEmployeeChildren"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/employees/getEmployeeAddresses/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/employees/getEmployeeAddresses/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"getEmployeeAddresses",
+						"1"
+					]
+				},
+				"description": "Get All Addresses of particular Employee"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/employees/deleteEmployeeById/1",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n    \"generalDetails\": {\n        \"age\": 33,\n        \"firstName\": \"Dmitry\",\n        \"lastName\": \"Pizda\"\n    },\n    \"spouse\": {\n        \"name\": \"Kfir\",\n        \"age\": 23\n    },\n    \"addresses\": [\n        {\n            \n            \"city\": \"Rishon22\",\n            \"street\": \"Migdalor344\",\n            \"number\": 89\n            \n        }\n    ],\n    \"children\": [\n        {\n            \n            \"name\": \"Ben\",\n            \"age\": 18\n            \n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/employees/deleteEmployeeById/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"deleteEmployeeById",
+						"1"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Delete employee and all relevant data"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
