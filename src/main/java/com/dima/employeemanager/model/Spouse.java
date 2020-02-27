@@ -1,4 +1,6 @@
-package com.dima.employeemanager.entities;
+package com.dima.employeemanager.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -7,7 +9,7 @@ import javax.persistence.*;
 public class Spouse {
 
     @Id
-    private int ID;
+    private long id;
 
     @Column(name = "name")
     private String name;
@@ -15,18 +17,22 @@ public class Spouse {
     @Column(name = "age")
     private int age;
 
-    @OneToOne
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name = "id", updatable = false, insertable = false, nullable=false)
+    @JsonIgnore
+    @MapsId
     private Employee employee;
 
     public Spouse() {
+
     }
 
-    public int getID() {
-        return ID;
+    public long getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {

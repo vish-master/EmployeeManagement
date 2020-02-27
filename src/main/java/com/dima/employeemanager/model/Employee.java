@@ -1,38 +1,50 @@
-package com.dima.employeemanager.entities;
+package com.dima.employeemanager.model;
+
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "Employees")
-public class Employee {
+@Table(name = "employees")
+
+public class Employee implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "ID")
-    private int empId;
+    @Column(name = "id")
+    @ApiModelProperty(notes = "The database generated employee ID")
+    private long id;
 
-    @OneToOne
+
+    @Embedded
+    @ApiModelProperty(notes = "The General Details about Employee")
     private GeneralDetails generalDetails;
 
-    @OneToOne
+    @OneToOne(mappedBy = "employee",cascade = {CascadeType.ALL})
+    @ApiModelProperty(notes = "Employee's spouse")
     private Spouse spouse;
 
-    @OneToMany(mappedBy = "employee")
+
+    @OneToMany(cascade = CascadeType.ALL,  orphanRemoval = true)
+    @ApiModelProperty(notes = "List of all employee's addresses")
     private List<Address> addresses;
 
-    @OneToMany(mappedBy = "employee")
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ApiModelProperty(notes = "List of all employee's children")
     private List<Child> children;
 
     public Employee() {
     }
 
-    public int getEmpId() {
-        return empId;
+    public long getId() {
+        return id;
     }
 
-    public void setEmpId(int empId) {
-        this.empId = empId;
+    public void setId(long empId) {
+        this.id = empId;
     }
 
     public GeneralDetails getGeneralDetails() {
@@ -48,6 +60,14 @@ public class Employee {
     }
 
     public void setSpouse(Spouse spouse) {
+        if (spouse == null) {
+            if (this.spouse != null) {
+                this.spouse.setEmployee(null);
+            }
+        }
+        else {
+            spouse.setEmployee(this);
+        }
         this.spouse = spouse;
     }
 
@@ -55,7 +75,13 @@ public class Employee {
         return addresses;
     }
 
-    public void setAddresses(List<Address> addresses) {
+    public void setAddresses(List<Address> addresses)
+    {
+
+        for (Address address:addresses) {
+            address.setEmployee(this);
+        }
+
         this.addresses = addresses;
     }
 
@@ -64,6 +90,10 @@ public class Employee {
     }
 
     public void setChildren(List<Child> children) {
+        for (Child child:children) {
+            child.setEmployee(this);
+        }
+
         this.children = children;
     }
 }

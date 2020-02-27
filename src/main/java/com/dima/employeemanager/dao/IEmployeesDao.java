@@ -1,4 +1,7 @@
 package com.dima.employeemanager.dao;
 
-public interface IEmployeesDao {
+import com.dima.employeemanager.model.Employee;
+import org.springframework.data.repository.CrudRepository;
+
+public interface IEmployeesDao  extends CrudRepository<Employee, Long> {
 }

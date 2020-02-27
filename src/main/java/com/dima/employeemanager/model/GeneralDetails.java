@@ -1,29 +1,34 @@
-package com.dima.employeemanager.entities;
+package com.dima.employeemanager.model;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "GeneralDetails")
+@Embeddable
 public class GeneralDetails {
 
-    @Id
-    private int ID;
 
-    @Column
     private int age;
 
-    @OneToOne
-    private Employee employee;
+    private String firstName;
+
+    private String lastName;
 
     public GeneralDetails() {
     }
 
-    public int getID() {
-        return ID;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public int getAge() {
@@ -34,11 +39,4 @@ public class GeneralDetails {
         this.age = age;
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
 }

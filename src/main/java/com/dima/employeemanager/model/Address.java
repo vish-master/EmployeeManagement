@@ -1,14 +1,16 @@
-package com.dima.employeemanager.entities;
+package com.dima.employeemanager.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
-@Table(name = "Addresses")
+@Table(name = "addresses")
 public class Address {
 
     @Id
-    @GeneratedValue
-    private int ID;
+    private long id;
 
     @Column(name = "City")
     private String city;
@@ -20,17 +22,20 @@ public class Address {
     private int number;
 
     @ManyToOne
+    @JoinColumn(name="employee_id")
+    @JsonIgnore
     private Employee employee;
+
 
     public Address() {
     }
 
-    public int getID() {
-        return ID;
+    public long getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(long ID) {
+        this.id = ID;
     }
 
     public String getCity() {
@@ -63,5 +68,32 @@ public class Address {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return id == address.id &&
+                number == address.number &&
+                city.equals(address.city) &&
+                street.equals(address.street);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, city, street, number);
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", number=" + number +
+                ", employee=" + employee +
+                '}';
     }
 }
